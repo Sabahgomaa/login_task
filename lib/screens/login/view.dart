@@ -1,82 +1,59 @@
+import 'package:auth_cycle_talabat/screens/forget_password/view.dart';
+import 'package:auth_cycle_talabat/screens/sign_up/view.dart';
+import 'package:auth_cycle_talabat/widgets/Contine.dart';
+import 'package:auth_cycle_talabat/widgets/Button.dart';
+import 'package:auth_cycle_talabat/widgets/app_bar.dart';
+import 'package:auth_cycle_talabat/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
+      appBar: appBar('Login '),
       body: Container(
-        child: ListView(
+        child: Column(
           children: [
             SizedBox(
-              height: 50,
-            ),
-            Container(
-                height: 200,
-                width: 200,
-                child: Image(
-                  image: AssetImage('images/flutter.jpg'),
-                )),
-            SizedBox(
               height: 10,
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'phone Number',
+            contine(),
+            testFormFied('Email'),
+            testFormFied('Password'),
+            SizedBox(
+              height: 50,
+            ),
+            // button('Login'),
+            Row(children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgetPassWord()));
+                  },
+                  textColor: Colors.deepPurple,
+                  child: Text('Forgot Password'),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                ),
+              SizedBox(
+                width: 90,
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 50,
-              width: 50,
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: RaisedButton(
-                textColor: Colors.white,
-                color: Colors.blue,
-                child: Text('Login'),
-                onPressed: () {},
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                //forgot password screen
-              },
-              textColor: Colors.grey,
-              child: Text('Forgot Password?No yawa.Tap me'),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 50,
-              width: 50,
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: RaisedButton(
-                textColor: Colors.black,
-                color: Colors.grey,
-                child: Text('No Account? Sign Up'),
-                onPressed: () {},
-              ),
-            ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpScreen()));
+                    },
+                    textColor: Colors.deepPurple,
+                    child: Text('Create an account')),
+              )
+            ]),
           ],
         ),
       ),
